@@ -24,6 +24,33 @@ interFace.question('What is your file name: ', (answer) => {
     interFace.close();
 });
 
+//2. DNS lookup
+
+const readline = require('readline');
+//dns library
+const dns = require('dns');
+
+const interFace = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+    
+interFace.question('What is your domain name: ', (answer) => {
+    //for lookig up for a domain name
+    dns.lookup(answer,(error, address) => {
+        //if the domain is wrong 
+        if (error){
+            console.log(error.message)
+        //if the domain is valid    
+        }else{
+            console.log('address: ', address);
+        }
+    });
+    interFace.close();
+});
+
+
+
 
 
 
