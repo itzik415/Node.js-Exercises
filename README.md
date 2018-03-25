@@ -1,2 +1,0 @@
-# gitExc
-practicing git
