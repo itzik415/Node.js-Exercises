@@ -49,6 +49,34 @@ interFace.question('What is your domain name: ', (answer) => {
     interFace.close();
 });
 
+//3. Read and write
+
+const readline = require('readline');
+//file system library
+const fs = require('fs');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+rl.question('Input name: ', (answer) => {
+    fs.readFile(answer, function(error, data) {
+        if (error){
+            console.log("Wrong file name")
+        }else{
+            var fileToString = data.toString();
+            var fileToUppercase = fileToString.toUpperCase();
+            rl.question('Output name: ', (answer2) => {
+                    fs.writeFile(answer2,fileToUppercase, (error) => {
+                        console.log('file saved!')
+                    })
+                rl.close();
+            })
+            
+        }
+    })
+})
 
 
 
