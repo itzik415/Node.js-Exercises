@@ -78,6 +78,39 @@ rl.question('Input name: ', (answer) => {
     })
 })
 
+//4. Save a web page
+const readline = require('readline');
+const fs = require('fs');
+const http = require('https');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.question('URL: ', (url) => {
+  rl.question('Save to file: ', (filename) => {
+    rl.close();
+    http.get(url, (response) => {
+      let pageData = '';
+      response.on('data', (chunk) => {
+        console.log('got some data...');
+        pageData += chunk;
+      });
+      response.on('end', () => {
+        fs.writeFile(filename, pageData, (err) => {
+          if (err) {
+            console.log(err.message);
+            return;
+          }
+          console.log(`Saved to file ${filename}`);
+        });
+      });
+    });
+  });
+});
+
+
 
 
 
