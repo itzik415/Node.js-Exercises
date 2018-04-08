@@ -36,3 +36,28 @@ var sum = function(array){
 
     return total;
 }
+
+//2. Reversing an array
+
+var reverseArray = (list) => {
+    var newArray= []
+    for(var i = 1; i <= list.length; i++){
+        var num = list[list.length-i];
+        newArray.push(num);
+    }
+    return newArray;
+}
+
+reverseArray([1,2,3,4,'g',3,'y',2]);
+
+var arrayValue = [1,2,3,4,'g',3,'y',2]
+function reverseArrayInPlace(array) {
+    for (let i = 0; i < Math.floor(array.length / 2); i++) {
+      let old = array[i];
+      array[i] = array[array.length - 1 - i];
+      array[array.length - 1 - i] = old;
+    }
+    return array;
+}
+
+reverseArrayInPlace(arrayValue);
