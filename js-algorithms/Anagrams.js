@@ -25,3 +25,17 @@ var buildCharMap = function(str){
 
     return charMap;
 }
+
+anagrams('rail safety', 'fairy tales');
+
+
+//Solution 2
+var anagrams = function(stringA, stringB){
+    return cleanString(stringA) === cleanString(stringB);
+}
+
+var cleanString = function(str) {
+    return str.replace(/[^\w]/g, '').toLowerCase().split('').sort().join();
+}
+
+anagrams('rail safety', 'fairy tales');
