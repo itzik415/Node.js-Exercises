@@ -31,3 +31,23 @@ var pyramid = function (num) {
     }   
 }
 
+//Solution 3
+var pyramid = function (num, row = 0, level = '') {
+    if (row === num) {
+        return;
+    }
+
+    if (level.length === 2 * num - 1) {
+        console.log(`'${level}'`);
+        return pyramid(num, row + 1)
+    }
+
+    const midpoint = Math.floor((2 * num - 1) / 2);
+    let add;
+    if (midpoint - row <= level.length && midpoint + row >= level.length) {
+        add = '#'
+    } else {
+        add = ' ';
+    }
+    pyramid(num, row, level + add);
+}
