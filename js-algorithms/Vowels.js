@@ -29,3 +29,25 @@ var Vowels = function (str) {
 
 Vowels('ThEreIa');
 
+//Solution 3 
+const Vowels = (str) => {
+    let x = 0;
+    const array = ['a', 'e', 'i', 'o', 'u'];
+    
+    for (let char of str.toLowerCase()) {
+        if (array.includes(char)) {
+            x++;
+        }
+    }
+    return x;
+}
+
+Vowels('ThEreIa');
+
+//Solution 4
+var Vowels = function (str) {
+    const matches = str.match(/[aeiou]/gi);
+    return matches ? matches.length : 0;
+}
+
+Vowels('ThEreIa');
